@@ -1,4 +1,4 @@
-import oneService from './services/one.service'
+import highScoreService from './services/high-score.service'
 import layoutModule from './layout/layout.module'
 
 const module = angular.module('app.commmon', [
@@ -6,6 +6,6 @@ const module = angular.module('app.commmon', [
 ])
 
 module
-  .factory('oneService', oneService)
+  .factory('highScoreService', highScoreService)
 
 export default module.name

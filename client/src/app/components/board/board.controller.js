@@ -1,8 +1,7 @@
 /* @ngInject */
-export default function boardController ($log, boardService, CONFIG) {
-  $log.debug('boardController')
+export default function boardController ($log, boardService, highScoreService, CONFIG) {
   let ctrl = this
-  let bestScores = {}
+  let highScores = highScoreService.getHighScores()
   ctrl.deckSizes = CONFIG.deckSizes
 
   ctrl.$onInit = init
@@ -44,7 +43,7 @@ export default function boardController ($log, boardService, CONFIG) {
 
           if (ctrl.game.cardsFound === ctrl.game.size) {
             ctrl.game.ended = true
-            checkHighScore()
+            highScores = highScoreService.checkHighScore(ctrl.game.size, ctrl.game.numberOfTries)
           }
         } else {
           ctrl.game.resetInNextRound = true
@@ -53,24 +52,16 @@ export default function boardController ($log, boardService, CONFIG) {
     }
   }
 
-  function checkHighScore () {
-    let bestScore = _.get(bestScores, ctrl.game.size)
-
-    if (!bestScore || bestScore > ctrl.game.numberOfTries) {
-      _.set(bestScores, ctrl.game.size, ctrl.game.numberOfTries)
-    }
-  }
-
   const newGame = (size) => {
     ctrl.game.size = size
     init(size)
   }
 
-  const getBestScore = () => _.get(bestScores, ctrl.game.size, '-')
+  const getHighScore = () => _.get(highScores, ctrl.game.size, '-')
 
   ctrl.controlFunctions = {
     toggleCard,
     newGame,
-    getBestScore
+    getHighScore
   }
 }
