@@ -59,7 +59,8 @@
   "standard": {
     "ignore": [],
     "globals": [
-      "angular"
+      "angular",
+      "_"
     ]
   }
 }

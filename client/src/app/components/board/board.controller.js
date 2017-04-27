@@ -21,7 +21,6 @@ export default function boardController ($log, boardService, CONFIG) {
   }
 
   const toggleCard = card => {
-
     ctrl.game.numberOfTries++
 
     if (ctrl.game.currentlyVisible.length === 0 || ctrl.game.resetInNextRound) {
@@ -41,7 +40,7 @@ export default function boardController ($log, boardService, CONFIG) {
         if (visible.symbol === card.symbol) {
           ctrl.game.resetInNextRound = true
           ctrl.game.cardsFound += 2
-          _.each(ctrl.game.currentlyVisible, card => {card.found = true})
+          _.each(ctrl.game.currentlyVisible, card => { card.found = true })
 
           if (ctrl.game.cardsFound === ctrl.game.size) {
             ctrl.game.ended = true
