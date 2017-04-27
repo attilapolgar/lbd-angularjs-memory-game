@@ -1,3 +1,5 @@
+import Game from './Game'
+
 /* @ngInject */
 export default function boardService ($log) {
   function generateStack (size) {
@@ -15,7 +17,7 @@ export default function boardService ($log) {
     }))
   }
 
-  const newGame = (size) => generateStack(size / 2)
+  const newGame = (size) => new Game(generateStack(size / 2), size)
   return {
     newGame
   }

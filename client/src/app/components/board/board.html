@@ -18,9 +18,7 @@
         <span>{{$ctrl.controlFunctions.getHighScore()}}</span>
     </div>
 
-    <div ng-if="$ctrl.game.ended">you won!</div>
-
-    <card-component ng-repeat="data in $ctrl.tableData"
+    <card-component ng-repeat="data in $ctrl.game.table"
                     data="data"
                     toggle="$ctrl.controlFunctions.toggleCard(data)"></card-component>
 
