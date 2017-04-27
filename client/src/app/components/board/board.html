@@ -1,0 +1,27 @@
+<div class="board-component">
+    <div>
+        <div>
+            {{$ctrl.game.size}} - card game
+        </div>
+        start new game:
+        <div class="sizeSelector" ng-repeat="size in $ctrl.deckSizes"
+             ng-click="$ctrl.controlFunctions.newGame(size)"
+             ng-class="{selected:$ctrl.game.size === size}">
+            {{size}}
+        </div>
+    </div>
+
+    <div> tries: {{$ctrl.game.numberOfTries}}
+    </div>
+
+    <div>best score:
+        <span>{{$ctrl.controlFunctions.getBestScore()}}</span>
+    </div>
+
+    <div ng-if="$ctrl.game.ended">you won!</div>
+
+    <card-component ng-repeat="data in $ctrl.tableData"
+                    data="data"
+                    toggle="$ctrl.controlFunctions.toggleCard(data)"></card-component>
+
+</div>
