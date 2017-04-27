@@ -1,24 +1,24 @@
-##install
+## install
 ```
 npm i
 ```
 
-##develop
+## develop
 ```
 npm run client
 ```
 
-##build
+## build
 ```
 npm run build
 ```
 
-##test
+## test
 ```
 npm run test
 ```
 
-$$serve dist
+## serve dist
 ```
 npm run server
 ```
