@@ -5,6 +5,6 @@ export default function appController ($log) {
   ctrl.$onInit = onInit
 
   function onInit () {
-    $log.debug('appController:: onInit', ctrl.data)
+    $log.debug('appController:: onInit')
   }
 }

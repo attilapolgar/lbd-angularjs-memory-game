@@ -6,12 +6,23 @@
   margin: 0.5rem;
   width: 5rem;
   height: 5rem;
+  box-shadow: 0 0 1rem 0 gray;
+  background-color: #eaeaea;
+  transition: 0.1s all;
 
   &.hidden {
-    background-color: black;
+    background-color: #f8f8f8;
   }
 
   &.found {
-    visibility: hidden;
+    opacity: 0;
+  }
+
+  .inner {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
+
   }
 }
