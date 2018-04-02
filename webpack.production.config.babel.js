@@ -7,17 +7,13 @@ import path from 'path'
 
 export default webpackMerge(commonConfig, {
   entry: {
-    vendor: [
-      'angular',
-      'angular-ui-router',
-      'lodash'
-    ],
-    app: ['./app/app.js']
+    vendor: ['angular', 'angular-ui-router', 'lodash'],
+    app: ['./app/app.js'],
   },
   output: {
-    path: path.resolve(__dirname, './client/dist'),
+    path: path.resolve(__dirname, './dist'),
     publicPath: '',
-    filename: '[name].[chunkhash].js'
+    filename: '[name].[chunkhash].js',
   },
   devtool: 'source-map',
   module: {
@@ -25,23 +21,26 @@ export default webpackMerge(commonConfig, {
       {
         test: /\.js$/,
         exclude: [/node_modules/],
-        use: ['ng-annotate-loader', 'babel-loader']
+        use: ['ng-annotate-loader', 'babel-loader'],
       },
       {
         test: /\.(less|css)$/,
         use: [
           'style-loader',
-          {loader: 'css-loader', options: {sourceMap: true, importLoaders: 1}},
-          {loader: 'less-loader', options: {sourceMap: true}}
-        ]
-      }
-    ]
+          {
+            loader: 'css-loader',
+            options: { sourceMap: true, importLoaders: 1 },
+          },
+          { loader: 'less-loader', options: { sourceMap: true } },
+        ],
+      },
+    ],
   },
   plugins: [
-    new CleanWebpackPlugin(['client/dist']),
+    new CleanWebpackPlugin(['/dist']),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: '[name].[chunkhash].js'
+      filename: '[name].[chunkhash].js',
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -49,8 +48,8 @@ export default webpackMerge(commonConfig, {
       sourceMap: true,
       beautify: false,
       compress: {
-        warnings: false
-      }
+        warnings: false,
+      },
     }),
     new HtmlWebpackPlugin({
       template: 'index.html',
@@ -58,8 +57,8 @@ export default webpackMerge(commonConfig, {
       minify: {
         collapseBooleanAttributes: true,
         collapseInlineTagWhitespace: true,
-        collapseWhitespace: true
-      }
-    })
-  ]
+        collapseWhitespace: true,
+      },
+    }),
+  ],
 })

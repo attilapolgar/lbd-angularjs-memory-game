@@ -3,9 +3,8 @@ import service from './board.service'
 import config from './board.config'
 import constant from './board.constant'
 
-let module = angular.module('app.components.board', [
-  'ui.router'
-])
+let module = angular
+  .module('app.components.board', ['ui.router'])
   .component('boardComponent', component)
   .config(config)
   .constant('CONFIG', constant)

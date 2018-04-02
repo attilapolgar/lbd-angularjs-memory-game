@@ -8,10 +8,8 @@ import appComponent from './app.component'
 import appConfig from './app.config'
 import appRun from './app.run'
 
-angular.module('app', [
-  components,
-  common,
-  uiRouter
-]).component('appComponent', appComponent)
+angular
+  .module('app', [components, common, uiRouter])
+  .component('appComponent', appComponent)
   .config(appConfig)
   .run(appRun)

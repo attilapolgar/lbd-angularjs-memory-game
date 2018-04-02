@@ -7,10 +7,12 @@ export default function boardService ($log) {
   let hashes = []
 
   function generateStack (pairs) {
-    hashes = _.times(pairs, () => randomString.generate({
-      charset: 'hex',
-      length: 32
-    }))
+    hashes = _.times(pairs, () =>
+      randomString.generate({
+        charset: 'hex',
+        length: 32
+      })
+    )
     let stack1 = gen(pairs)
     let stack2 = gen(pairs)
 
@@ -18,7 +20,7 @@ export default function boardService ($log) {
   }
 
   function gen (size) {
-    return _.times(size, (i) => {
+    return _.times(size, i => {
       let hash = hashes[i]
       return {
         hidden: true,
@@ -37,7 +39,7 @@ export default function boardService ($log) {
     }).toString()}`
   }
 
-  const newGame = (size) => new Game(generateStack(size / 2), size)
+  const newGame = size => new Game(generateStack(size / 2), size)
   return {
     newGame
   }

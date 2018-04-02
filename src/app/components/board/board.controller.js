@@ -1,5 +1,10 @@
 /* @ngInject */
-export default function boardController ($log, boardService, highScoreService, CONFIG) {
+export default function boardController (
+  $log,
+  boardService,
+  highScoreService,
+  CONFIG
+) {
   let ctrl = this
   let highScores = highScoreService.getHighScores()
 
@@ -11,15 +16,17 @@ export default function boardController ($log, boardService, highScoreService, C
   }
 
   const toggleCard = card => {
-
     let ended = ctrl.game.flip(card)
 
     if (ended) {
-      highScores = highScoreService.checkHighScore(ctrl.game.size, ctrl.game.getNumberOfTries())
+      highScores = highScoreService.checkHighScore(
+        ctrl.game.size,
+        ctrl.game.getNumberOfTries()
+      )
     }
   }
 
-  const newGame = (size) => {
+  const newGame = size => {
     init(size)
   }
 

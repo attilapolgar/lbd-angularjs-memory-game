@@ -12,18 +12,21 @@ export default webpackMerge(commonConfig, {
         test: /\.(less|css)$/,
         use: [
           'style-loader',
-          {loader: 'css-loader', options: {sourceMap: true, importLoaders: 1}},
-          {loader: 'less-loader', options: {sourceMap: true}}
-        ]
-      }
-    ]
+          {
+            loader: 'css-loader',
+            options: { sourceMap: true, importLoaders: 1 },
+          },
+          { loader: 'less-loader', options: { sourceMap: true } },
+        ],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
-      favicon: './assets/images/favicon.png'
+      favicon: './assets/images/favicon.png',
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
     hot: true,
@@ -31,7 +34,7 @@ export default webpackMerge(commonConfig, {
     open: true,
     host: 'localhost',
     stats: 'verbose',
-    contentBase: path.resolve(__dirname, './client/dist'),
-    historyApiFallback: true
-  }
+    contentBase: path.resolve(__dirname, './dist'),
+    historyApiFallback: true,
+  },
 })

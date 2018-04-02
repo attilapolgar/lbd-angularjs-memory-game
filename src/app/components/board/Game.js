@@ -7,7 +7,7 @@ export default function Game (_board, _size) {
   let currentlyVisible = []
   let resetInNextRound = false
 
-  const flip = (card) => {
+  const flip = card => {
     numberOfTries++
 
     if (currentlyVisible.length === 0 || resetInNextRound) {
@@ -27,7 +27,9 @@ export default function Game (_board, _size) {
         if (visible.symbol === card.symbol) {
           resetInNextRound = true
           cardsFound += 2
-          _.each(currentlyVisible, card => { card.found = true })
+          _.each(currentlyVisible, card => {
+            card.found = true
+          })
 
           if (cardsFound === size) {
             ended = true
